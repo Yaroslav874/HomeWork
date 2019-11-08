@@ -5,17 +5,18 @@ using std::endl;
 
 void big_trench(int A[], int n)
 {
-for (int i=0;i<n;++i)
-{
-    for(int j=0;j<n;++j)
-    {if(i-j>0)
-        A[i*n+j]=i-j;
-        else
-        {
-        A[i*n+j]=j-i;
-        }
-    }
-}
+	for (int i=0;i<n;++i)
+	{
+	    for(int j=0;j<n;++j)
+	    {
+		if(i-j>0)
+			A[i*n+j]=i-j;
+	        else
+        	{
+		        A[i*n+j]=j-i;
+	        }
+	    }
+	}
 }
 
 int main()
