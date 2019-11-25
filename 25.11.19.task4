@@ -1,0 +1,52 @@
+//# HomeWork
+//HomeWork
+# include <iostream>
+int morek(int A[], int B[], int n, int once)
+{
+	int k = 1, p, l = 0, u;
+	for (int i = 0; i < n; ++i)
+	{
+		u = A[i];
+		while (u > 0)
+		{
+			
+			p = u % 10;
+			u /= 10;
+			if (p != 0)
+			{
+				k = k * p;
+			}
+		}
+		if (once < k)
+		{
+			B[l] = A[i];
+			l++;
+		}
+		k = 1
+			;
+	}
+	return l;
+}
+
+int main()
+{
+	using std::cin;
+	using std::cout;
+
+	int once, n, l;
+	cin >> n >> once;
+	int* A = new int[n];
+	int* B = new int[n];
+
+	for (int i = 0; i < n; ++i)
+	{
+		cin >> A[i];
+	}
+	l = morek(A, B, n, once);
+	for (int i = 0; i < l; ++i)
+	{
+		cout << B[i]<< " ";
+	}
+	return 0;
+
+}
