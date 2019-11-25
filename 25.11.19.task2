@@ -1,0 +1,24 @@
+# include <iostream>
+# include <cmath>
+int main()
+{
+	using std::cin;
+	using std::cout;
+	using std::pow;
+	int n, k;
+	double polindrom;
+	cin >> n;
+	if (n % 2 == 1)
+	{
+		k = (n + 1) / 2;
+		polindrom = 9 * pow(10, k - 1);
+		cout << polindrom;
+	}
+	else
+	{
+		k = n / 2;
+		polindrom = 9 * pow(10, k-1);
+		cout << polindrom;
+	}
+	return 0;
+}
