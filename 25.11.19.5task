@@ -1,0 +1,55 @@
+# include <iostream>
+int sistema(int A[], int B[], int n, int k, int& s)
+{
+	int u, l=0, p, m=0;
+	for (int i = 0; i < n; ++i)
+	{
+		u = A[i];
+		while (u > 0)
+		{
+
+			p = u % 3;
+			u /= 3;
+			if (p == 2)
+			{
+				l++;
+			}
+		}
+
+		if (l < k)
+		{
+			B[s] = A[i];
+			s++;
+			m += l;
+		}
+		l = 0;
+	}
+	return m;
+}
+
+
+
+int main()
+{
+	using std::cin;
+	using std::cout;
+
+	int k, n, l;
+	int s = 0;
+	cin >> n >> k;
+	int* A = new int[n];
+	int* B = new int[n];
+
+	for (int i = 0; i < n; ++i)
+	{
+		cin >> A[i];
+	}
+	l = sistema(A, B, n, k, s);
+	for (int i = 0; i < s; ++i)
+	{
+		cout << B[i] << " ";
+	}
+	
+	return 0;
+
+}
