@@ -1,0 +1,47 @@
+
+#include <iostream>
+
+int polendrom(int a, int b) 
+{
+	if (b == 0)
+	{
+		return 1;
+	}
+	int p = a;
+	while (b > 1) 
+	{
+		if (b % 2 == 0) 
+		{
+			b = b/2;
+			a=a*p;
+		}
+		else
+		{
+			--b;
+			a =a*p;
+		}
+	}
+	return a;
+}
+
+int main()
+{
+	using std::cin;
+	using std::cout;
+	using std::endl;
+
+	int n;
+	cin >> n;
+	int a = n - (n / 2);
+	int b = n / 2;
+
+	for (int i = polendrom(10, (a - 1)); i < polendrom(10, a); i++)
+	{
+		cout << i;
+		for (int j = (a - b); j < a; j++) 
+		{
+			cout << (i / polendrom(10, j)) % 10 << endl;
+		}
+	}
+	return 0;
+}
