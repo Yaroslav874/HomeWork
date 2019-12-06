@@ -1,0 +1,50 @@
+#include <iostream>
+
+int main()
+{
+	using std::cin;
+	using std::cout;
+	using std::endl;
+
+	int n, k, l, j, i;
+	cin >> n;
+
+	int* A = new int[n];
+	for (i = 0; i < n; ++i)
+	{
+		cin >> A[i];
+		l = i;
+		while (A[l] < A[l - 1])
+		{
+			j = A[l];
+			A[l] = A[l - 1];
+			A[l - 1] = j;
+			l--;
+		}
+	}
+	i = 0;
+	cout << endl;
+	cin >> k;
+	/*
+	cout << A[k - 1];
+	return 0;
+	*/
+
+	while (A[i]!= k && i!=n)
+	{
+		l = i;
+		if (A[l] > k)
+		{
+			l = n - (n - l) / 2;
+		}
+		else
+		{
+			l = l / 2;
+		}
+		++i;
+	}
+	if (A[i]==k)
+		cout << i+1;
+	else
+		cout << "No";
+}
