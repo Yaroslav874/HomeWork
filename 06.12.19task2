@@ -1,0 +1,37 @@
+#include <iostream>
+// работает только в отсортерованом массиве, если набо (я не понял по условию) могу добавить сортировки, например из другой прогамы этой же дз.
+int main()
+{
+	using std::cin;
+	using std::cout;
+	using std::endl;
+
+	int n, l, k;
+	cin >> n;
+
+	int* A = new int[n];
+	for (int i = 0; i < n; ++i)
+	{
+
+		cin >> A[i];
+	}
+	cout << endl;
+	cin >> k >> l;
+	int i = n / 2;
+	while (A[i] != k && A[i] != l)
+	{
+		if (A[i] > k)
+		{
+			i = n - (n - i) / 2;
+		}
+		else
+		{
+			i = i / 2;
+		}
+	}
+	if (A[i + 1] == l || A[i - 1] == k)
+		cout << "Yes";
+	else
+		cout << "No";
+	return 0;
+}
