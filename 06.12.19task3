@@ -1,0 +1,26 @@
+#include <iostream>
+
+int u (int x1,int x2,int n, int i)
+{
+	int x;
+	++i;
+	if (n == i)
+	{
+		return x1 + x2;
+	}
+	else 
+	{
+		x = x1 + x2;
+		return u(x2, x, n, i);
+	}
+
+}
+int main()
+{
+	using std::cin;
+	using std::cout;
+	int x1 = 1, x2 = 1, n, i = 2, l;
+	cin >> n;
+	l = u(x1, x2, n, i);
+	cout << l;
+}
