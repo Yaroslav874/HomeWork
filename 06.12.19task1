@@ -1,0 +1,101 @@
+#include <iostream>
+#include <cmath>
+double l(double x)
+{
+	double y;
+	y = pow(x,5) - 1;
+	//y=5*x+7;
+	return y;
+}
+
+
+bool rootYesNo(double anknown1, double anknown2)
+{
+
+	if (anknown1 > 0 && anknown2 > 0)
+	{
+		return false;
+	}
+	else if (anknown1 < 0 && anknown2 < 0)
+	{
+		return false;
+	}
+	return true;
+}
+
+double o(double x1, double x2)
+{
+	double anknown1, anknown2;
+	anknown1 = l(x1);
+	anknown2 = l(x2);
+
+	while ((anknown1>0 && anknown2 >0) || (anknown1<0 && anknown2<0))
+	{
+		anknown1 = l(x1);
+		anknown2 = l(x2);
+
+		if (anknown1 > 0 && anknown2 > 0)
+		{
+			if (anknown1 > anknown2)
+			{
+				x2 = x2 - 100;
+			}
+			else
+			{
+				x1 = x1 - 100;
+			}
+		}
+		else if (anknown1 < 0 && anknown2 < 0)
+		{
+			if (anknown1 > anknown2)
+			{
+				x1 = x1 + 100;
+			}
+			else
+			{
+				x2 = x2 + 100;
+			}
+		}
+		
+	}
+	double xx, yy;
+	while (abs(anknown1) >= pow(10, -6) || abs(anknown2) >= pow(10, -6))
+	{
+		xx = x2 - (x2 - x1) / 2;
+		yy = l(xx);
+		if (rootYesNo(anknown1, yy))
+		{
+			x2 = xx;
+			anknown2 = yy;
+		}
+		else
+		{
+			x1 = xx;
+			anknown1 = yy;
+		}
+	}
+	if (abs(anknown1) > abs(anknown2))
+	{
+		return x1;
+	}
+	else 
+	{ 
+		return x2;
+	}
+
+
+}
+
+
+int main()
+{
+	using std::cin;
+	using std::cout;
+	using std::endl;
+
+	double x1,x2, k;
+	cin >> x1 >> x2;
+	k = o(x1, x2);
+	cout << k;
+return 0;
+}
