@@ -1,0 +1,74 @@
+
+#include <iostream>
+
+
+using namespace std;
+struct longint 
+{
+	longint()
+	{
+		for (int i = 0; i < 10; ++i)
+			A[i] = 0;
+		n = 10;
+	}
+	
+	longint(longint const& orlong) :n(orlong.n), A(new short[10])
+	{
+		for (int i = 0; i < 10; ++i)
+			A[i] = orlong.A[i];
+	}
+	~longint()
+	{
+		delete[] A;
+	}
+	void read_longint()
+	{
+		short i = 0;
+		char f[10];
+		cin.getline(f,10,'\n');
+		while (i < n)
+		{
+			if ((f[i] - '0') < 10 && 0 <= (f[i] - '0'))
+				A[i] = f[i] - '0';
+			else
+			{
+				n = i;
+			}
+			++i;
+		}
+
+	}
+	void write_longint()
+	{
+		
+		for(int i=0;i < n;++i)
+		{
+			cout<< A[i];
+		}
+		cout << endl;
+	}
+	
+
+size_t n;
+short* A = new short[10];
+};
+
+
+
+
+
+int main()
+{
+	using std::cin;
+	using std::cout;
+	longint anknown;
+	anknown.read_longint();
+	int a = 1;
+	if (a == 1)
+	{
+		longint newanknow(anknown);
+		newanknow.write_longint();
+	}
+	anknown.write_longint();
+}
+
