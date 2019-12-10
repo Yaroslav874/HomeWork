@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int n,i;
+	cout << "enter how many mines ";
+	 cin >> n;
+	int* A = new int[n];
+	int* gold = new int[n];
+	int* power = new int[n];
+	int* line = new int[n];
+	
+	for (i = 0; i < n; ++i)
+	{	cout << i + 1 <<"coordinate "<< "gold " << "power"<<endl;
+		A[i] = i;
+		cin >> line[i] >>gold[i] >>power[i] ;
+	
+	}
+	i = 0;
+	int j = 1, l=0, p=0, mingold=0, g=0,v;
+	while (i < n)
+	{
+		while (j < n)
+		{
+			for (v = 0; v <= j;++v)
+			{
+				p = power[v] + p;
+				g = g + gold[v];
+			}
+			v = 0;
+			l = line[j] - line[i];
+				if (l <= p)
+				{
+					if (mingold < g)
+					{
+						mingold = g;
+					}
+				}
+		g = 0;
+		p = 0;
+		l = 0;
+		++j;
+		}
+		
+		++i;
+		j = i + 1;
+	}
+	cout << mingold;
+	
+}
+
